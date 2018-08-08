@@ -8,6 +8,6 @@ An R Package with Boosting and SMOTEBoost implementations for Regression Tasks
     library(devtools)  # You need to install this package!
     install_github("nunompmoniz/ReBoost",ref="master")
 
-After installation the package can be used loadedby doing:
+After installation the package can be used loaded by doing:
 
      library(ReBoost)
