@@ -1,0 +1,272 @@
+setClassUnion("optlist", c("list","NULL"))
+
+#' SmoteBoost-class
+#'
+#' \strong{SmoteBoost} is a S4 class that contains sqdiqdq
+#' sadas
+#' sss
+#'
+#'
+#' @slot model A set of decision trees corresponding to the number of boosting iterations
+#'
+#' @slot form A formula describing the prediction problem
+#'
+#' @slot model_pars Parameters used to create decision trees and guide the boosting process
+#'
+#' @slot modeltype Type of boosting method
+#'
+#' @slot perc_over Over-sampling percentage to apply to randomly selected cases with extreme values.
+#'
+#' @keywords internal
+#'
+#' @export
+setClass("SmoteBoost",
+         slots = c(model = "list",
+                   form = "formula",
+                   model_pars = "optlist",
+                   modeltype = "character",
+                   perc_over = "numeric")
+)
+
+#' SmoteBoost
+#'
+#' \strong{SmoteBoost} is a S4 class that contains
+#'
+#' @param form A formula describing the prediction problem
+#'
+#' @param data A data frame containing the training data
+#'
+#' @param modeltype Type of boosting method
+#'
+#' @param model_pars Vector of parameters used to create decision trees and guide the boosting process
+#'
+#' @param perc_over Over-sampling percentage to apply to randomly selected cases with extreme values.
+#'
+#' @export
+#'
+#' @examples
+#' library(ReBoost)
+#' data(iris)
+#' ind <- sample(0.75*nrow(iris))
+#' tr <- iris[ind,]
+#' ts <- iris[-ind,]
+#' form<-Sepal.Length ~ .
+#'
+#' #For SMOTEBoost.RQ
+#' m1 <- SmoteBoost(form, tr, modeltype = "RQ", model_pars = NULL); predict(m1, ts)
+#'
+#' #For SMOTEBoost.R2
+#' m2<-SmoteBoost(form, iris, modeltype = "R2", model_pars = NULL); predict(m2, ts)
+#'
+#' #For SMOTEBoost.RT
+#' m3<-SmoteBoost(form, iris, modeltype = "RT", model_pars = NULL); predict(m3, ts)
+#'
+#' #For SMOTEBoost.RT+
+#' m4<-SmoteBoost(form, iris, modeltype = "RTPlus", model_pars = NULL); predict(m4, ts)
+#'
+#' #For SMOTEBoost.BEM
+#' m5<-SmoteBoost(form, iris, modeltype = "BEM", model_pars = NULL); predict(m5, ts)
+#'
+SmoteBoost <-
+  function(form, data, modeltype, model_pars, perc_over=.8) {
+    available_types <- c("RTPlus","RQ","R2","RT","BEM")
+
+    if (!(modeltype %in% available_types)) {
+      stop("The only available types of Boosting methods in this package are RTPlus, RQ, R2, RT and BEM.")
+    }
+
+    model <-
+      switch(
+        modeltype,
+        "RTPlus" = {
+          mpars <- get_pars("RTPlus", model_pars)
+
+          SMOTEBoost.RTPlus.train(form = form,
+                                  data = data,
+                                  niter = mpars$niter,
+                                  thr = mpars$thr,
+                                  power = mpars$power,
+                                  sigma = mpars$sigma,
+                                  perc.O = perc_over)
+        },
+        "RQ" = {
+          mpars <- get_pars("RQ", model_pars)
+
+          SMOTEBoost.RQ.train(form = form,
+                              data = data,
+                              niter = mpars$niter,
+                              power = mpars$power,
+                              perc.O = perc_over)
+        },
+        "R2" = {
+          mpars <- get_pars("R2", model_pars)
+
+          SMOTEBoost.R2.train(form = form,
+                              data = data,
+                              niter = mpars$niter,
+                              power = mpars$power,
+                              perc.O = perc_over)
+        },
+        "RT" = {
+          mpars <- get_pars("RT", model_pars)
+
+          SMOTEBoost.RT.train(form = form,
+                              data = data,
+                              niter=mpars$niter,
+                              thr = mpars$thr,
+                              power = mpars$power,
+                              perc.O = perc_over)
+        },
+        "BEM" = {
+          mpars <- get_pars("BEM", model_pars)
+
+          SMOTEBoostBEM.train(form = form,
+            data = data,
+            niter=mpars$niter,
+            BEM = mpars$BEM,
+            perc.O = perc_over)
+        }
+      )
+
+    methods::new(
+      "SmoteBoost",
+      model = model$models,
+      form = form,
+      model_pars = model$model_pars,
+      modeltype = modeltype,
+      perc_over = perc_over)
+  }
+
+
+setMethod("show",
+          signature("SmoteBoost"),
+          function(object) {
+            cat("### Model Type: SMOTEBoost.",object@modeltype, "\n\n")
+            cat(length(object@model)," rounds of boosting with",object@perc_over * 100,"% of SMOTE on cases with extreme values.\n")
+            cat("Individual decision trees can be accessed in slot 'model'.\n\n")
+          }
+)
+
+
+get_pars <-
+  function(modeltype, model_pars) {
+    switch(
+      modeltype,
+      "RTPlus" = {
+        if (is.null(model_pars)) {
+          return(list(
+            niter = 100,
+            thr = .01,
+            power = 2,
+            sigma = .5
+          ))
+        }
+
+        if (is.null(model_pars[["niter"]])) {
+          niter <- 100
+          model_pars <- c(model_pars, niter = niter)
+        }
+
+        if (is.null(model_pars[["thr"]])) {
+          thr <- .01
+          model_pars <- c(model_pars, thr = thr)
+        }
+
+        if (is.null(model_pars[["power"]])) {
+          power <- 2
+          model_pars <- c(model_pars, power = power)
+        }
+
+        if (is.null(model_pars[["sigma"]])) {
+          sigma <- .5
+          model_pars <- c(model_pars, sigma = sigma)
+        }
+      },
+      "RQ" = {
+        if (is.null(model_pars)) {
+          return(list(niter = 100, power = 2))
+        }
+
+        if (is.null(model_pars[["niter"]])) {
+          niter <- 100
+          model_pars <- c(model_pars, niter = niter)
+        }
+
+        if (is.null(model_pars[["power"]])) {
+          power <- 2
+          model_pars <- c(model_pars, power = power)
+        }
+      },
+      "R2" = {
+        if (is.null(model_pars)) {
+          return(list(
+            niter = 100,
+            power = 2
+          ))
+        }
+
+        if (is.null(model_pars[["niter"]])) {
+          niter <- 100
+          model_pars <- c(model_pars, niter = niter)
+        }
+
+        if (is.null(model_pars[["power"]])) {
+          power <- 2
+          model_pars <- c(model_pars, power = power)
+        }
+
+      },
+      "RT" = {
+        if (is.null(model_pars)) {
+          return(list(
+            niter = 100,
+            thr = .01,
+            power = 2,
+            sigma = .5
+          ))
+        }
+
+        if (is.null(model_pars[["niter"]])) {
+          niter <- 100
+          model_pars <- c(model_pars, niter = niter)
+        }
+
+        if (is.null(model_pars[["thr"]])) {
+          thr <- .01
+          model_pars <- c(model_pars, thr = thr)
+        }
+
+        if (is.null(model_pars[["power"]])) {
+          power <- 2
+          model_pars <- c(model_pars, power = power)
+        }
+
+        if (is.null(model_pars[["sigma"]])) {
+          sigma <- .5
+          model_pars <- c(model_pars, sigma = sigma)
+        }
+
+      },
+      "BEM" = {
+        if (is.null(model_pars)) {
+          return(list(
+            niter = 100,
+            BEM = 0.5
+          ))
+        }
+
+        if (is.null(model_pars[["niter"]])) {
+          niter <- 100
+          model_pars <- c(model_pars, niter = niter)
+        }
+
+        if (is.null(model_pars[["BEM"]])) {
+          BEM <- 0.5
+          model_pars <- c(model_pars, BEM = BEM)
+        }
+
+      }
+    )
+  }
+
+

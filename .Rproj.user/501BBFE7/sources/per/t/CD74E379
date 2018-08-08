@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1523180934071.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3261074452",
+    "id" : "CD74E379",
+    "lastKnownWriteTime" : 1533734638,
+    "last_content_update" : 1533734638,
+    "path" : "~/Dropbox/ReBoost/R/ada_smote.r",
+    "project_path" : "R/ada_smote.r",
+    "properties" : {
+        "cursorPosition" : "9,21",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

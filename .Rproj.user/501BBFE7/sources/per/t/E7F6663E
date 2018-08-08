@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1523180801071.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1155813681",
+    "id" : "E7F6663E",
+    "lastKnownWriteTime" : 1533734481,
+    "last_content_update" : 1533734481,
+    "path" : "~/Dropbox/ReBoost/R/adaboost_r2.r",
+    "project_path" : "R/adaboost_r2.r",
+    "properties" : {
+        "cursorPosition" : "51,21",
+        "scrollLine" : "67",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
