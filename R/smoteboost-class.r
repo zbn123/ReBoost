@@ -280,8 +280,6 @@ get_pars <-
       },
       "RQ" = {
 
-        print(model_pars)
-
         if (is.null(model_pars)) {
           return(list(niter = 100, power = 2))
         }
