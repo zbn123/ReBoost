@@ -86,6 +86,7 @@ SMOTEBoost.RQ.train <-
            niter = 100,
            power = 2,
            perc.O = 1.5) {
+
     models <- list()
     betas <- c()
     pred.mat <- c()
