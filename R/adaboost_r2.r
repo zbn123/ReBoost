@@ -1,4 +1,4 @@
-#' AdaBoost.R2
+#' Create an AdaBoost.R2 model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data
@@ -6,6 +6,7 @@
 #' @param power Exponent used to calculate the weight of each decision tree. Common values are 1 (linear), 2 (quadratic, default), 3 (cubic).
 #'
 #' @keywords internal
+#'
 AdaBoost.R2.train <- function(form,data,niter=100,power=2) {
   models <- list()
   betas <- c()
@@ -50,6 +51,7 @@ AdaBoost.R2.train <- function(form,data,niter=100,power=2) {
 #' @import rpart
 #'
 #' @keywords internal
+#'
 AdaBoost.R2.predict <-
   function(models, betas, newdata) {
     preds <- lapply(models, predict, newdata)
@@ -61,7 +63,7 @@ AdaBoost.R2.predict <-
           })
   }
 
-#' SMOTEd AdaBoost.R2
+#' Create a SMOTEd AdaBoost.R2 model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data

@@ -13,7 +13,7 @@
 \item{newdata}{A data frame containing the test data}
 }
 \description{
-Predict method for objects of AdaBoost class
+Method for prediction when using objects of the class AdaBoost.
 }
 \examples{
 library(ReBoost)

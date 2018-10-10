@@ -2,7 +2,7 @@
 % Please edit documentation in R/bemboost.r
 \name{SMOTEBoostBEM.train}
 \alias{SMOTEBoostBEM.train}
-\title{SMOTEd BEMBoost}
+\title{Create a SMOTEd BEMBoost model}
 \usage{
 SMOTEBoostBEM.train(form, data, niter = 100, BEM = 0.5, perc.O = 1.5)
 }
@@ -18,6 +18,6 @@ SMOTEBoostBEM.train(form, data, niter = 100, BEM = 0.5, perc.O = 1.5)
 \item{perc.O}{Over-sampling percentage to apply to randomly selected cases with extreme values}
 }
 \description{
-SMOTEd BEMBoost
+Create a SMOTEd BEMBoost model
 }
 \keyword{internal}

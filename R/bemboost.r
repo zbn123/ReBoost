@@ -1,4 +1,4 @@
-#' BEMBoost
+#' Create a BEMBoost model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data
@@ -6,6 +6,7 @@
 #' @param BEM Big Error Margin. A value that defines which errors (absolute distance) should be considered as being big.
 #'
 #' @keywords internal
+#'
 BEMBoost.train <-
   function(form, data, niter = 100, BEM=0.5) {
 
@@ -52,7 +53,7 @@ BEMBoost.train <-
 
 }
 
-#' predict method
+#' BEMBoost predict method
 #'
 #' @param model A set of decision trees corresponding to the number of boosting iterations
 #' @param newdata A data frame containing the test data
@@ -67,7 +68,7 @@ BEMBoost.predict <-
     rowMeans(preds)
   }
 
-#' SMOTEd BEMBoost
+#' Create a SMOTEd BEMBoost model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data

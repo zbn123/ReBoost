@@ -234,13 +234,14 @@ setMethod("show",
 )
 
 
-
-
-
 #' Predict method for objects of AdaBoost class
+#'
+#' @description Method for prediction when using objects of the class AdaBoost.
 #'
 #' @param object An AdaBoost object
 #' @param newdata A data frame containing the test data
+#'
+#' @export
 #'
 #' @examples
 #' library(ReBoost)
@@ -254,7 +255,6 @@ setMethod("show",
 #' m1 <- AdaBoost(form, tr, modeltype = "RQ", model_pars = NULL); predict(m1, ts)
 #' m1p <- AdaBoost(form, tr, modeltype = "RQ", model_pars = list(niter=100,power=2)); predict(m1p, ts)
 #'
-#' @export
 setMethod("predict",
           signature("AdaBoost"),
           function(object, newdata) {

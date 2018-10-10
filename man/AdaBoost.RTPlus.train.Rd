@@ -2,7 +2,7 @@
 % Please edit documentation in R/adaboost_rtplus.r
 \name{AdaBoost.RTPlus.train}
 \alias{AdaBoost.RTPlus.train}
-\title{SMOTEd AdaBoost.RT+}
+\title{Create an AdaBoost.RT+ model}
 \usage{
 AdaBoost.RTPlus.train(form, data, niter = 100, thr = 0.01, power = 2,
   sigma = 0.5)
@@ -21,6 +21,6 @@ AdaBoost.RTPlus.train(form, data, niter = 100, thr = 0.01, power = 2,
 \item{sigma}{Value used for regularization (default 0.5). If no regularization is expected, use NULL}
 }
 \description{
-SMOTEd AdaBoost.RT+
+Create an AdaBoost.RT+ model
 }
 \keyword{internal}

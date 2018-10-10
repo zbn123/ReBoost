@@ -2,7 +2,7 @@
 % Please edit documentation in R/bemboost.r
 \name{BEMBoost.train}
 \alias{BEMBoost.train}
-\title{BEMBoost}
+\title{Create a BEMBoost model}
 \usage{
 BEMBoost.train(form, data, niter = 100, BEM = 0.5)
 }
@@ -16,6 +16,6 @@ BEMBoost.train(form, data, niter = 100, BEM = 0.5)
 \item{BEM}{Big Error Margin. A value that defines which errors (absolute distance) should be considered as being big.}
 }
 \description{
-BEMBoost
+Create a BEMBoost model
 }
 \keyword{internal}

@@ -4,22 +4,28 @@
 \alias{adaSMOTE}
 \title{adaSMOTE}
 \usage{
-adaSMOTE(form, dat, perc.o, rel.thr = 0.9, k, pc = NULL)
+adaSMOTE(form, dat, perc.o = 1.5, rel.thr = 0.9, k = 3, pc = NULL)
 }
 \arguments{
 \item{form}{A formula describing the prediction problem}
 
 \item{dat}{A data frame containing the training data}
 
-\item{perc.o}{Over-sampling percentage to apply to randomly selected cases with extreme values}
+\item{perc.o}{Over-sampling percentage to apply to randomly selected cases with extreme values - defaults to 1.5}
 
 \item{rel.thr}{Relevance threshold for considering case as having extreme value}
 
-\item{k}{Number of neighbours to use in SMOTE interpolation}
+\item{k}{Number of neighbours to use in SMOTE interpolation - defaults to 3}
 
 \item{pc}{Relevance function}
 }
 \description{
-adaSMOTE
+Applies the SMOTEr resampling strategy to a given data set.
+}
+\references{
+L. Torgo, P. Branco, R. P. Ribeiro, et al. “Re-sampling Strategies for Regression”. In: Expert Systems 32.3 (2015), pp. 465-476.
+
+
+P. Branco, R. Ribeiro and L. Torgo. “A UBL: an R package for Utility-based Learning”. In: CoRR abs/1604.08079 (2016).
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bemboost.r
 \name{BEMBoost.predict}
 \alias{BEMBoost.predict}
-\title{predict method}
+\title{BEMBoost predict method}
 \usage{
 BEMBoost.predict(models, newdata)
 }
@@ -12,6 +12,6 @@ BEMBoost.predict(models, newdata)
 \item{model}{A set of decision trees corresponding to the number of boosting iterations}
 }
 \description{
-predict method
+BEMBoost predict method
 }
 \keyword{internal}

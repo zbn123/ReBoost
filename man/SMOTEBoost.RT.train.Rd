@@ -2,7 +2,7 @@
 % Please edit documentation in R/adaboost_rt.r
 \name{SMOTEBoost.RT.train}
 \alias{SMOTEBoost.RT.train}
-\title{SMOTEd AdaBoost.RT}
+\title{Create a SMOTEd AdaBoost.RT model}
 \usage{
 SMOTEBoost.RT.train(form, data, niter = 100, thr = 0.1, power = 2,
   perc.O = 1.5)
@@ -21,6 +21,6 @@ SMOTEBoost.RT.train(form, data, niter = 100, thr = 0.1, power = 2,
 \item{perc.O}{Over-sampling percentage to apply to randomly selected cases with extreme values}
 }
 \description{
-SMOTEd AdaBoost.RT
+Create a SMOTEd AdaBoost.RT model
 }
 \keyword{internal}

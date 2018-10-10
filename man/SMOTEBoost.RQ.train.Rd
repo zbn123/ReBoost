@@ -2,7 +2,7 @@
 % Please edit documentation in R/adaboost_rq.r
 \name{SMOTEBoost.RQ.train}
 \alias{SMOTEBoost.RQ.train}
-\title{SMOTEd AdaBoost.RQ}
+\title{Create a SMOTEd AdaBoost.RQ model}
 \usage{
 SMOTEBoost.RQ.train(form, data, niter = 100, power = 2, perc.O = 1.5)
 }
@@ -18,6 +18,6 @@ SMOTEBoost.RQ.train(form, data, niter = 100, power = 2, perc.O = 1.5)
 \item{perc.O}{po}
 }
 \description{
-SMOTEd AdaBoost.RQ
+Create a SMOTEd AdaBoost.RQ model
 }
 \keyword{internal}

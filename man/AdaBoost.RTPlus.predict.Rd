@@ -2,7 +2,7 @@
 % Please edit documentation in R/adaboost_rtplus.r
 \name{AdaBoost.RTPlus.predict}
 \alias{AdaBoost.RTPlus.predict}
-\title{predict method for AdaBoost.RTPlus}
+\title{AdaBoost.RTPlus predict method}
 \usage{
 AdaBoost.RTPlus.predict(models, newdata, delta)
 }
@@ -14,6 +14,6 @@ AdaBoost.RTPlus.predict(models, newdata, delta)
 \item{delta}{Model weights}
 }
 \description{
-predict method for AdaBoost.RTPlus
+AdaBoost.RTPlus predict method
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/adaboost_r2.r
 \name{AdaBoost.R2.train}
 \alias{AdaBoost.R2.train}
-\title{AdaBoost.R2}
+\title{Create an AdaBoost.R2 model}
 \usage{
 AdaBoost.R2.train(form, data, niter = 100, power = 2)
 }
@@ -16,6 +16,6 @@ AdaBoost.R2.train(form, data, niter = 100, power = 2)
 \item{power}{Exponent used to calculate the weight of each decision tree. Common values are 1 (linear), 2 (quadratic, default), 3 (cubic).}
 }
 \description{
-AdaBoost.R2
+Create an AdaBoost.R2 model
 }
 \keyword{internal}
