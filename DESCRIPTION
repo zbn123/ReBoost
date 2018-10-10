@@ -11,7 +11,7 @@ Authors: Nuno Moniz [aut, cre],
         Rita P. Ribeiro [ctb],
         Nitesh Chawla [ctb]
 Maintainer: Nuno Moniz <nmmoniz@inesctec.pt>
-Description: A group of boosting methods for standard and imbalanced regression tasks. Boosting is a subsampling ensemble method based on the idea that it is possible to convert a weak learning algorithm (that performs slightly better than a random predictor) into one that is able to achieve high accuracy. Regardless of its proven relevance in classification problems, there are a few proposals of boosting for regression tasks. This package groups some of these proposals and provides a SMOTEBoost variant for each of them to tackle imbalanced regression tasks - prediction of extreme values.
+Description: Boosting methods for standard and imbalanced regression tasks. Boosting is a subsampling ensemble method based on the idea that it is possible to convert a weak learning algorithm (that performs slightly better than a random predictor) into one that is able to achieve high accuracy. Regardless of its proven relevance in classification problems, there are a few proposals of boosting for regression tasks. This package groups some of these proposals and provides a variants incorporating resampling strategies for each of them to tackle imbalanced regression tasks - prediction of extreme values.
 Imports:
     UBL,
     grDevices,

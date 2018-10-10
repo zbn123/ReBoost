@@ -1,4 +1,4 @@
-#' AdaBoost.RQ
+#' Create an AdaBoost.RQ model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data
@@ -71,7 +71,7 @@ AdaBoost.RQ.predict <-
     finalpreds
   }
 
-#' SMOTEd AdaBoost.RQ
+#' Create a SMOTEd AdaBoost.RQ model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data

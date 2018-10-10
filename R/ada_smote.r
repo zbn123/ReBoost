@@ -1,15 +1,23 @@
 #' adaSMOTE
 #'
+#' @description Applies the SMOTEr resampling strategy to a given data set.
+#'
 #' @param form A formula describing the prediction problem
 #' @param dat A data frame containing the training data
-#' @param perc.o Over-sampling percentage to apply to randomly selected cases with extreme values
+#' @param perc.o Over-sampling percentage to apply to randomly selected cases with extreme values - defaults to 1.5
 #' @param rel.thr Relevance threshold for considering case as having extreme value
-#' @param k Number of neighbours to use in SMOTE interpolation
+#' @param k Number of neighbours to use in SMOTE interpolation - defaults to 3
 #' @param pc Relevance function
 #'
 #' @keywords internal
+#'
+#' @references L. Torgo, P. Branco, R. P. Ribeiro, et al. “Re-sampling Strategies for Regression”. In: Expert Systems 32.3 (2015), pp. 465-476.
+#'
+#'
+#' P. Branco, R. Ribeiro and L. Torgo. “A UBL: an R package for Utility-based Learning”. In: CoRR abs/1604.08079 (2016).
+#'
 adaSMOTE <-
-  function(form, dat, perc.o, rel.thr = 0.9, k, pc = NULL) {
+  function(form, dat, perc.o=1.5, rel.thr = 0.9, k=3, pc = NULL) {
 
     y <- dat[, as.character(form[[2]])]
 

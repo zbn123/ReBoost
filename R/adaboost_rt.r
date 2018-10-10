@@ -1,4 +1,4 @@
-#' AdaBoost.RT
+#' Create an AdaBoost.RT model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data
@@ -70,7 +70,7 @@ AdaBoost.RT.predict <-
     num / sum(log(1 / betas))
   }
 
-#' SMOTEd AdaBoost.RT
+#' Create a SMOTEd AdaBoost.RT model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data

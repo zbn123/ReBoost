@@ -260,22 +260,22 @@ get_pars <-
 
         if (is.null(model_pars[["niter"]])) {
           niter <- 100
-          return(c(model_pars, niter = niter))
+          model_pars <- c(model_pars, niter = niter)
         }
 
         if (is.null(model_pars[["thr"]])) {
           thr <- .01
-          return(c(model_pars, thr = thr))
+          model_pars <- c(model_pars, thr = thr)
         }
 
         if (is.null(model_pars[["power"]])) {
           power <- 2
-          return(c(model_pars, power = power))
+          model_pars <- c(model_pars, power = power)
         }
 
         if (is.null(model_pars[["sigma"]])) {
           sigma <- .5
-          return(c(model_pars, sigma = sigma))
+          model_pars <- c(model_pars, sigma = sigma)
         }
       },
       "RQ" = {
@@ -286,12 +286,12 @@ get_pars <-
 
         if (is.null(model_pars[["niter"]])) {
           niter <- 100
-          return(c(model_pars, niter = niter))
+          model_pars <- c(model_pars, niter = niter)
         }
 
         if (is.null(model_pars[["power"]])) {
           power <- 2
-          return(c(model_pars, power = power))
+          model_pars <- c(model_pars, power = power)
         }
 
       },
@@ -305,12 +305,12 @@ get_pars <-
 
         if (is.null(model_pars[["niter"]])) {
           niter <- 100
-          return(c(model_pars, niter = niter))
+          model_pars <- c(model_pars, niter = niter)
         }
 
         if (is.null(model_pars[["power"]])) {
           power <- 2
-          return(c(model_pars, power = power))
+          model_pars <- c(model_pars, power = power)
         }
 
       },
@@ -326,22 +326,22 @@ get_pars <-
 
         if (is.null(model_pars[["niter"]])) {
           niter <- 100
-          return(c(model_pars, niter = niter))
+          model_pars <- c(model_pars, niter = niter)
         }
 
         if (is.null(model_pars[["thr"]])) {
           thr <- .01
-          return(c(model_pars, thr = thr))
+          model_pars <- c(model_pars, thr = thr)
         }
 
         if (is.null(model_pars[["power"]])) {
           power <- 2
-          return(c(model_pars, power = power))
+          model_pars <- c(model_pars, power = power)
         }
 
         if (is.null(model_pars[["sigma"]])) {
           sigma <- .5
-          return(c(model_pars, sigma = sigma))
+          model_pars <- c(model_pars, sigma = sigma)
         }
 
       },
@@ -355,16 +355,19 @@ get_pars <-
 
         if (is.null(model_pars[["niter"]])) {
           niter <- 100
-          return(c(model_pars, niter = niter))
+          model_pars <- c(model_pars, niter = niter)
         }
 
         if (is.null(model_pars[["BEM"]])) {
           BEM <- 0.5
-          return(c(model_pars, BEM = BEM))
+          model_pars <- c(model_pars, BEM = BEM)
         }
 
       }
     )
+
+    model_pars
+
   }
 
 

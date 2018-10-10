@@ -1,4 +1,4 @@
-#' SMOTEd AdaBoost.RT+
+#' Create an AdaBoost.RT+ model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data
@@ -70,7 +70,7 @@ AdaBoost.RTPlus.train <-
     list(models = models, model_pars=model_pars)
   }
 
-#' predict method for AdaBoost.RTPlus
+#' AdaBoost.RTPlus predict method
 #'
 #' @param models A set of decision trees corresponding to the number of boosting iterations
 #' @param newdata A data frame containing the test data
@@ -88,7 +88,7 @@ AdaBoost.RTPlus.predict <-
     (pred.mat %*% delta)[,1]
   }
 
-#' SMOTEd AdaBoost.RT+
+#' Create a SMOTEd AdaBoost.RT+ model
 #'
 #' @param form A formula describing the prediction problem
 #' @param data A data frame containing the training data
